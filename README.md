@@ -12,5 +12,11 @@
 
 ## Technologies Used
 
-- Java 17.0.12
-- React 18.3.1
+- Java: 17.0.12
+    - Spring
+- Node: 22.12.0
+    - React
+    - ky
+    - Redux toolkit
+    - Eslint: feature-sliced/eslint-config
+    - Prettier
