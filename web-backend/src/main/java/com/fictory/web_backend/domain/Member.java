@@ -7,9 +7,17 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.EnumType;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,86 +43,4 @@ public class Member {
 
     @Column(name = "refresh_token")
     private String refreshToken;
-
-    public Member(
-            String username,
-            String password,
-            String phoneNumber,
-            MemberRole role,
-            LocalDateTime createdAt,
-            LocalDateTime lastLoginAt,
-            String refreshToken
-    ) {
-        this.username = username;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.role = role;
-        this.createdAt = createdAt;
-        this.lastLoginAt = lastLoginAt;
-        this.refreshToken = refreshToken;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public MemberRole getRole() {
-        return role;
-    }
-
-    public void setRole(MemberRole role) {
-        this.role = role;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getLastLoginAt() {
-        return lastLoginAt;
-    }
-
-    public void setLastLoginAt(LocalDateTime lastLoginAt) {
-        this.lastLoginAt = lastLoginAt;
-    }
-
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
 }
