@@ -1,11 +1,13 @@
 package com.fictory.web_backend;
 
-import com.fictory.web_backend.config.AppConfig;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.context.*;
 
+@SpringBootApplication
 public class CoreApplication {
+
     public static void main(String[] args) {
-        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext ac = SpringApplication.run(CoreApplication.class, args);
     }
 }

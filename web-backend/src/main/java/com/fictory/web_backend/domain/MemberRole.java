@@ -8,5 +8,4 @@ public enum MemberRole {
     REGULAR(1);
 
     private final int level;
-
 }

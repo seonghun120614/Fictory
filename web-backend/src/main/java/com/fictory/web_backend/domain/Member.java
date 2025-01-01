@@ -1,23 +1,20 @@
 package com.fictory.web_backend.domain;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.EnumType;
+import jakarta.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
+@Table(
+    name="member",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"username"}),
+    }
+)
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,4 +40,14 @@ public class Member {
 
     @Column(name = "refresh_token")
     private String refreshToken;
+
+    public Member(String username, String password, String phoneNumber, MemberRole role, LocalDateTime createdAt, LocalDateTime lastLoginAt, String refreshToken) {
+        this.username = username;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+        this.createdAt = createdAt;
+        this.lastLoginAt = lastLoginAt;
+        this.refreshToken = refreshToken;
+    }
 }
