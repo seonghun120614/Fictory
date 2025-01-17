@@ -42,14 +42,14 @@ class MemberControllerTest {
         // given
         RegisterRequest request = new RegisterRequest(
                 "010-0000-0000",
-                "khw",
+                "khwkhw",
                 "12341234"
         );
 
         RegisterResponse response = new RegisterResponse(
                 "token",
                 "refreshToken",
-                "khw",
+                "khwkhw",
                 "Register Successful"
         );
 

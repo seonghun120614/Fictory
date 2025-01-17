@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MemoryMemberRepositoryTest {
-
     MemoryMemberRepository memoryMemberRepository = new MemoryMemberRepository();
 
     static Member member1;
@@ -35,6 +34,11 @@ class MemoryMemberRepositoryTest {
                 null,
                 null
         );
+    }
+
+    @BeforeEach
+    void init() {
+        memoryMemberRepository.clear();
     }
 
     @DisplayName("회원 저장 테스트")
