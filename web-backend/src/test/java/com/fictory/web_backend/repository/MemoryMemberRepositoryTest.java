@@ -2,14 +2,19 @@ package com.fictory.web_backend.repository;
 
 import com.fictory.web_backend.domain.*;
 import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
 
 import java.time.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+@SpringBootTest
 class MemoryMemberRepositoryTest {
-    MemoryMemberRepository memoryMemberRepository = new MemoryMemberRepository();
+
+    @Autowired
+    MemoryMemberRepository memoryMemberRepository;
 
     static Member member1;
     static Member member2;
@@ -25,6 +30,7 @@ class MemoryMemberRepositoryTest {
                 null,
                 null
         );
+
         member2 = new Member(
                 "username1",
                 "password2",

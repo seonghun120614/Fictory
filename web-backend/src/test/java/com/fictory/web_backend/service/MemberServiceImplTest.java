@@ -3,19 +3,18 @@ package com.fictory.web_backend.service;
 import com.fictory.web_backend.dto.*;
 import com.fictory.web_backend.repository.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.*;
-import org.mockito.*;
-import org.mockito.junit.jupiter.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
+
+@SpringBootTest
 class MemberServiceImplTest {
+    @Autowired
+    MemberService memberService;
 
-    @InjectMocks
-    private MemberServiceImpl memberService;
-
-    @Mock
+    @Autowired
     private MemberRepository memberRepository;
 
     @DisplayName("회원가입 서비스 테스트")
@@ -27,6 +26,7 @@ class MemberServiceImplTest {
                 "khw",
                 "12341234"
         );
+
         RegisterResponse expectedResponse = new RegisterResponse(
                 "token",
                 "refreshToken",

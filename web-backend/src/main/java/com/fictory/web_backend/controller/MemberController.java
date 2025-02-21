@@ -1,21 +1,31 @@
 package com.fictory.web_backend.controller;
 
-import com.fictory.web_backend.domain.*;
 import com.fictory.web_backend.dto.*;
-import com.fictory.web_backend.service.*;
-
-import lombok.*;
-
-import org.springframework.web.bind.annotation.*;
+import com.fictory.web_backend.service.MemberService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
-@RequiredArgsConstructor
+@RequestMapping("/api/register")
 public class MemberController {
+    private MemberService memberService;
 
-    private final MemberService memberService;
+    @Autowired
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
-    @PostMapping(value = "/api/register")
-    public RegisterResponse register(@RequestBody RegisterRequest registerRequest) {
-        return null;
+    @PostMapping
+    public ResponseEntity<RegisterResponse> register(
+            @Valid @RequestBody RegisterRequest requestDto
+    ) {
+        RegisterResponse responseDto = memberService.register(requestDto);
+
+        return ResponseEntity.ok(responseDto);
     }
 }

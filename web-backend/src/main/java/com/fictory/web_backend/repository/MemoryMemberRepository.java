@@ -8,11 +8,32 @@ import java.util.concurrent.*;
 
 @Repository
 public class MemoryMemberRepository implements MemberRepository {
-
-    private static ConcurrentMap<Long, Member> members = new ConcurrentHashMap<>();
+    private final static ConcurrentMap<Integer, Member> MEMBERS = new ConcurrentHashMap<>();
 
     @Override
     public Member save(Member member) {
-        return null;
+        // Blank
+        if (MEMBERS.isEmpty()) {
+            MEMBERS.put(0, member);
+            System.out.println("HELLO");
+            return member;
+        }
+
+        for (int key : MEMBERS.keySet()) {
+            System.out.println("key: " + key);
+
+            // Existed
+            if (MEMBERS.get(key).getUsername().equals(member.getUsername()))
+                return null;
+        }
+
+        // Missing
+        MEMBERS.put(MEMBERS.size(), member);
+        return member;
+    }
+
+    @Override
+    public void clear() {
+        MEMBERS.clear();
     }
 }
